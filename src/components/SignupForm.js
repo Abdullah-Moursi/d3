@@ -62,14 +62,13 @@ const SignupForm = () => {
               />
               <TextField label="Your full name" name="fullName" type="text" />
               <TextField
-              style={{maxWidth: "45%"}}
+                style={{ maxWidth: "45%" }}
                 label="Your phone number"
                 name="phoneNumber"
                 type="number"
               />
               <div className={styles.signupForm__checkBoxContainer}>
-                <Field 
-                type="checkbox" name="acceptTerms" className="mb-2" />
+                <Field type="checkbox" name="acceptTerms" className="mb-2" />
                 <label htmlFor="acceptTerms">
                   I read and agreed to Terms and Conditions
                 </label>

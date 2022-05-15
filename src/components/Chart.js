@@ -14,10 +14,22 @@ var sample = [
 ];
 
 const Chart = () => {
-  const [sampleData] = useState(sample);
-  
+  const [sampleData, setSampleData] = useState(sample);
+  const [isRandomized, setIsRandomized] = useState(true);
+
   function getRandomData() {
-    sampleData.sort(() => 0.5 - Math.random());
+    const randomizedData = sampleData.sort(() => 0.5 - Math.random());
+    setSampleData(randomizedData);
+    setIsRandomized((prev) => !prev);
+
+    // Listen for any resize event update
+
+    window.addEventListener("resize", () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    });
   }
 
   const d3Chart = useRef();
@@ -30,31 +42,19 @@ const Chart = () => {
   const update = useRef(false);
 
   useEffect(() => {
-    // Listen for any resize event update
-    window.addEventListener("resize", () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-
-      // If resize, remove the previous chart
-      if (update.current) {
-        d3.selectAll("g").remove();
-      } else {
-        update.current = true;
-      }
-    });
-    getRandomData();
+    if (update.current) {
+      d3.selectAll("g").remove();
+    } else {
+      update.current = true;
+    }
 
     // Draw chart using the data and updated dimensions
     DrawChart(sampleData, dimensions);
-  }, [dimensions]);
+  }, [isRandomized, dimensions]);
 
   const margin = { top: 50, right: 30, bottom: 30, left: 60 };
 
   function DrawChart(data, dimensions) {
-    // console.log(dimensions.width, dimensions.height)
-
     const chartwidth =
       parseInt(d3.select("#d3demo").style("width")) -
       margin.left -
@@ -123,9 +123,7 @@ const Chart = () => {
       <button
         style={{ color: "white", marginLeft: "10%" }}
         className="btn btn-danger"
-        onClick={() => {
-          window.location.reload(false);
-        }}
+        onClick={() => getRandomData()}
       >
         Random!
       </button>

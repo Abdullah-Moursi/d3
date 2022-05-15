@@ -11,8 +11,8 @@ const SignupSideBar = () => {
       <div className={styles.signupSideBar__description}>
         <h1>Choose a date range</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur <br />  Accusamus
-          voluptate sapiente voluptatum.
+          Lorem ipsum dolor sit amet consectetur <br /> Accusamus voluptate
+          sapiente voluptatum.
         </p>
       </div>
     </div>
