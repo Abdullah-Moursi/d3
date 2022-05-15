@@ -1,0 +1,33 @@
+.signupForm {
+  background-color: white;
+  border: 1px solid #e9e9e9;
+  min-height: 96vh;
+  border-radius: 5px;
+  padding: 3em 0;
+}
+
+.signupForm__contents {
+  padding-left: 10%;
+  max-width: 60%;
+
+  h2 {
+    padding-bottom: 1em;
+    font-weight: bold;
+  }
+}
+
+.signupForm__checkBoxContainer {
+  input[type="checkbox"] {
+    transform: scale(1.5);
+    cursor: pointer;
+    // accent-color: #33adff;
+    margin-left: 0.2em;
+    vertical-align: -2px;
+  }
+
+  label {
+    padding-left: 0.9rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+}
