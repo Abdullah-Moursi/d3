@@ -27,6 +27,7 @@ const SignupForm = () => {
       "You must accept the terms and conditions"
     ),
   });
+  
   return (
     <Formik
       initialValues={{
